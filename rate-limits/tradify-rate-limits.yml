@@ -1,0 +1,60 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Tradify
+providerId: tradify
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- Job Management
+- Trades
+- SaaS
+- Rate Limiting
+- Quotas
+description: >-
+  No public API rate limits are documented because Tradify does not publish a
+  public developer API. There is no developer portal, published quota, or
+  documented throttling behavior for third-party programmatic access. Any limits
+  that apply to Tradify's undocumented app backend (api.tradifyhq.com) or to
+  unofficial proxy access are internal and unpublished. For supported
+  integrations, throughput and rate limits are governed by the partner platform
+  (for example, Xero's own API rate limits apply to the Tradify-Xero sync on the
+  Xero side).
+notes: >-
+  Nothing to reconcile - no numeric public API limits exist. If a public API is
+  introduced in the future, revisit this file.
+sources:
+- https://www.tradifyhq.com/how-it-works
+- https://help.tradifyhq.com/hc/en-us
+- https://supergood.ai/docs/tradify-api
+responseCodes:
+  throttled: 429
+limits:
+- name: Public API Requests
+  scope: account
+  metric: requests
+  limit: not applicable
+  notes: Tradify publishes no public API, so no public request-rate limit is documented.
+- name: App Backend
+  scope: session
+  metric: requests
+  limit: not published
+  notes: >-
+    api.tradifyhq.com is an undocumented, session-authenticated internal backend;
+    any limits are internal and unpublished.
+- name: Partner Integration Sync
+  scope: integration
+  metric: requests
+  limit: governed by partner
+  notes: >-
+    Accounting/payment integration throughput is subject to the partner
+    platform's rate limits (e.g. Xero, QuickBooks Online), not Tradify.
+policies:
+- name: No Public API
+  description: There is no documented public API surface to rate limit as of the review date.
+- name: Partner-Governed Limits
+  description: Supported integrations inherit the connected partner platform's rate limits and retry semantics.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

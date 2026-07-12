@@ -1,0 +1,83 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Tradify
+providerId: tradify
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- Job Management
+- Trades
+- SaaS
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Tradify spend. Tradify is a per-user SaaS subscription (job
+  management for trades and services), not a metered/usage-based API product -
+  there is no public API to meter or optimize. Cost is driven almost entirely by
+  the number of active user seats multiplied by the plan rate (Lite / Pro / Plus,
+  or a Custom agreement), billed monthly. Optimization is therefore about seat
+  management (right-sizing licensed users, deactivating unused seats) rather than
+  request/token metering. Connected accounting/payment partners (Xero, MYOB,
+  QuickBooks Online, Sage, Stripe) may carry their own separate charges.
+notes: >-
+  Per-user rates are not reconciled here; verify on Tradify's pricing page.
+  Because pricing is per seat, the primary FinOps lever is seat count, not API
+  usage. Stripe payment processing (if enabled for taking customer payments)
+  incurs Stripe's own transaction fees.
+sources:
+- https://www.tradifyhq.com/
+- https://www.capterra.com/p/152413/Tradify/pricing/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Tradify
+serviceCategory: Business Application Software
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Tradify
+  ServiceCategory: Business Application Software
+  ProviderName: Tradify
+  PublisherName: Tradify
+  InvoiceIssuerName: Tradify (Access)
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
+meters:
+- name: user_seats
+  description: Licensed Tradify user seats, billed per user per month. Primary cost driver.
+  unit: seats
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: payment_processing
+  description: Card payment processing fees when Stripe is enabled for customer payments (charged by Stripe).
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Track licensed seats per plan and per account; there is no API usage to meter.
+- name: Allocation
+  description: Map user seats to teams/branches so the monthly per-seat cost lands on the right cost center.
+- name: Optimization
+  description: Right-size seats - deactivate users who no longer need access, and match each user to the lowest plan tier that meets their needs.
+- name: Accountability
+  description: Review active seat count monthly against the subscription invoice; watch for orphaned or duplicate seats.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

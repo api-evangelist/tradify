@@ -1,0 +1,59 @@
+generated: '2026-07-12'
+method: probed
+source: live DNS/TLS/HTTP probes of Tradify hosts (apis.yml + known app backend)
+hosts:
+- host: www.tradifyhq.com
+  https: true
+  tls_issuer: Google Trust Services (WE1)
+  cert_expires: Sep 12 01:02:51 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+  hsts_preload: true
+  notes: Marketing site served via HubSpot CMS behind Cloudflare.
+- host: tradifyhq.com
+  https: true
+  redirect: https://www.tradifyhq.com/
+  server: Microsoft-IIS/10.0
+  hsts: null
+  notes: Apex 301-redirects to www; ASP.NET / IIS front responds before redirect.
+- host: api.tradifyhq.com
+  https: true
+  tls_issuer: GoDaddy Secure Certificate Authority - G2
+  cert_expires: Sep  7 22:39:52 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  csp: "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self'; base-uri 'self'; form-action 'self'"
+  x_content_type_options: nosniff
+  notes: >-
+    Live application backend (HTTP 200, empty body at root). Undocumented and
+    session-authenticated - used by Tradify's own web/mobile apps, NOT a public
+    API. Locked-down CSP (default-src 'none'). TLS cert issuer differs from the
+    marketing site, confirming a separate origin.
+- host: help.tradifyhq.com
+  https: true
+  server: cloudflare
+  hsts: true
+  hsts_max_age: 259200
+  notes: Zendesk-hosted help centre.
+domains:
+- domain: tradifyhq.com
+  dnssec: false
+  nameservers:
+  - hayes.ns.cloudflare.com
+  - imani.ns.cloudflare.com
+  caa: []
+  spf: true
+  spf_record: "v=spf1 include:_spf.google.com include:sendgrid.net include:2929749.spf10.hubspotemail.net include:spf.mandrillapp.com include:mail.zendesk.com -all"
+  dmarc: true
+  dmarc_policy: none
+  dmarc_record: "v=DMARC1; p=none; rua=mailto:dmarc@tradifyhq.com; ruf=mailto:dmarc@tradifyhq.com;"
+observations:
+- All probed public hosts serve HTTPS with HSTS enabled.
+- No CAA records are published on tradifyhq.com (multiple CAs observed across hosts - Google Trust Services and GoDaddy).
+- DMARC is published but policy is p=none (monitor only), so spoofed mail is not actively rejected/quarantined.
+- SPF ends in -all (hard fail) and enumerates Google, SendGrid, HubSpot, Mandrill, and Zendesk as authorized senders.
+- No public API host or developer surface was found to probe; api.tradifyhq.com is the app backend and is undocumented.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

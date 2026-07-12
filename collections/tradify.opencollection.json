@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradify API (Modeled - Not an Official Public API)",
+    "version": "0.0-modeled",
+    "description": "MODELED collection. As of 2026-07-12 Tradify publishes no open, documented public developer API, portal, API keys, or webhooks. No public base URL exists; the baseUrl variable is intentionally empty. Items model the resource surface inferred from Tradify's product and unofficial third-party proxy descriptions, and are not confirmed against official docs."
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "in": "header",
+      "name": "Authorization",
+      "value": "{{sessionToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Jobs (Modeled)", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List jobs (modeled)", "type": "http" },
+          "http": { "method": "GET", "url": "{{baseUrl}}/jobs" },
+          "docs": "MODELED - not a confirmed public endpoint."
+        },
+        {
+          "info": { "name": "Create a job (modeled)", "type": "http" },
+          "http": { "method": "POST", "url": "{{baseUrl}}/jobs", "body": { "type": "json", "data": "{}" } },
+          "docs": "MODELED - not a confirmed public endpoint."
+        },
+        {
+          "info": { "name": "Retrieve a job (modeled)", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/jobs/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "Resource identifier (modeled)." }
+            ]
+          },
+          "docs": "MODELED - not a confirmed public endpoint."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Customers (Modeled)", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List customers (modeled)", "type": "http" },
+          "http": { "method": "GET", "url": "{{baseUrl}}/customers" },
+          "docs": "MODELED - not a confirmed public endpoint."
+        },
+        {
+          "info": { "name": "Create a customer (modeled)", "type": "http" },
+          "http": { "method": "POST", "url": "{{baseUrl}}/customers", "body": { "type": "json", "data": "{}" } },
+          "docs": "MODELED - not a confirmed public endpoint."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Quotes (Modeled)", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List quotes (modeled)", "type": "http" },
+          "http": { "method": "GET", "url": "{{baseUrl}}/quotes" },
+          "docs": "MODELED - not a confirmed public endpoint."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Invoices (Modeled)", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List invoices (modeled)", "type": "http" },
+          "http": { "method": "GET", "url": "{{baseUrl}}/invoices" },
+          "docs": "MODELED - not a confirmed public endpoint. Invoice sync in practice happens via Xero / MYOB / QuickBooks / Sage partner integrations."
+        },
+        {
+          "info": { "name": "Create an invoice (modeled)", "type": "http" },
+          "http": { "method": "POST", "url": "{{baseUrl}}/invoices", "body": { "type": "json", "data": "{}" } },
+          "docs": "MODELED - not a confirmed public endpoint."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Timesheets (Modeled)", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List timesheet entries (modeled)", "type": "http" },
+          "http": { "method": "GET", "url": "{{baseUrl}}/timesheets" },
+          "docs": "MODELED - not a confirmed public endpoint."
+        }
+      ]
+    }
+  ]
+}

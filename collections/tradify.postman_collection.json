@@ -1,0 +1,130 @@
+{
+  "info": {
+    "name": "Tradify API (Modeled - Not an Official Public API)",
+    "description": "MODELED collection. As of 2026-07-12 Tradify publishes NO open, self-serve, documented public developer API, portal, API keys, or webhooks. There is no public base URL, so the baseUrl variable is intentionally empty. Requests below model the resource surface (jobs, customers, quotes, invoices, timesheets) inferred from Tradify's product and from unofficial third-party proxy descriptions; they are NOT confirmed against official Tradify docs and must not be treated as a supported contract. Tradify's supported programmatic surface is its accounting/payment partner integrations (Xero, MYOB, QuickBooks Online, Sage, Stripe). The live host api.tradifyhq.com is an undocumented, session-authenticated app backend, not a public API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "Authorization", "type": "string" },
+      { "key": "value", "value": "{{sessionToken}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "", "type": "string", "description": "MODELED / undocumented. No public Tradify API base URL exists. Left empty on purpose." },
+    { "key": "sessionToken", "value": "", "type": "string", "description": "MODELED. No public API key; Tradify's app backend uses a session token from username/password + MFA sign-in." }
+  ],
+  "item": [
+    {
+      "name": "Jobs (Modeled)",
+      "item": [
+        {
+          "name": "List jobs (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/jobs", "host": ["{{baseUrl}}"], "path": ["jobs"] },
+            "description": "MODELED - not a confirmed public endpoint."
+          }
+        },
+        {
+          "name": "Create a job (modeled)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"description\": \"\",\n  \"customerId\": \"\",\n  \"siteAddress\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/jobs", "host": ["{{baseUrl}}"], "path": ["jobs"] },
+            "description": "MODELED - not a confirmed public endpoint."
+          }
+        },
+        {
+          "name": "Retrieve a job (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/jobs/:id", "host": ["{{baseUrl}}"], "path": ["jobs", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "MODELED - not a confirmed public endpoint."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customers (Modeled)",
+      "item": [
+        {
+          "name": "List customers (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/customers", "host": ["{{baseUrl}}"], "path": ["customers"] },
+            "description": "MODELED - not a confirmed public endpoint."
+          }
+        },
+        {
+          "name": "Create a customer (modeled)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"\",\n  \"email\": \"\",\n  \"phone\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/customers", "host": ["{{baseUrl}}"], "path": ["customers"] },
+            "description": "MODELED - not a confirmed public endpoint."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Quotes (Modeled)",
+      "item": [
+        {
+          "name": "List quotes (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/quotes", "host": ["{{baseUrl}}"], "path": ["quotes"] },
+            "description": "MODELED - not a confirmed public endpoint."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invoices (Modeled)",
+      "item": [
+        {
+          "name": "List invoices (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/invoices", "host": ["{{baseUrl}}"], "path": ["invoices"] },
+            "description": "MODELED - not a confirmed public endpoint. Invoice sync in practice happens through Xero / MYOB / QuickBooks / Sage partner integrations."
+          }
+        },
+        {
+          "name": "Create an invoice (modeled)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"jobId\": \"\",\n  \"quoteId\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/invoices", "host": ["{{baseUrl}}"], "path": ["invoices"] },
+            "description": "MODELED - not a confirmed public endpoint."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Timesheets (Modeled)",
+      "item": [
+        {
+          "name": "List timesheet entries (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/timesheets", "host": ["{{baseUrl}}"], "path": ["timesheets"] },
+            "description": "MODELED - not a confirmed public endpoint."
+          }
+        }
+      ]
+    }
+  ]
+}

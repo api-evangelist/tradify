@@ -1,0 +1,114 @@
+aid: tradify
+name: Tradify
+review:
+  question: Does Tradify expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-12'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Tradify does not publish any documented
+    public API - REST, WebSocket, or SSE. There is therefore no server-push
+    transport on a Tradify public API to model. The only confirmed live API
+    host, api.tradifyhq.com, is an undocumented, session-authenticated
+    application backend used by Tradify's own web and mobile clients; its
+    protocols are not published and it is out of scope for an AsyncAPI document.
+findings:
+  summary: |
+    Tradify does NOT expose a documented public WebSocket API, and more broadly
+    does not publish an open, self-serve, documented public developer API of any
+    kind. There is no public developer portal, no self-service API keys, and no
+    documented webhooks. Tradify's supported programmatic surface is limited to
+    pre-built accounting and payment partner integrations (Xero, MYOB Business,
+    QuickBooks Online, Sage, and Stripe). A live backend host
+    (https://api.tradifyhq.com) exists and answers over HTTPS with a locked-down
+    Content-Security-Policy (default-src 'none'), but it is undocumented and
+    reserved for Tradify's own apps - not a public API. Because no public API is
+    documented, no public WebSocket (ws:// or wss://) endpoint is documented
+    either.
+  accessModel: |
+    - No public REST API documentation, no developer portal, no public API keys.
+    - Supported integration is via accounting/payment partners only (two-way
+      sync of invoices/payments to Xero, MYOB, QuickBooks Online, Sage; card
+      payments via Stripe).
+    - api.tradifyhq.com is a real, live, TLS-secured host (confirmed by probe)
+      but is an undocumented internal/app backend; it is NOT presented here as a
+      usable public base URL.
+    - Unofficial third-party proxies (e.g. Supergood, HelloPeople) provide
+      programmatic access by automating the authenticated username/password +
+      MFA session; those are the third parties' endpoints, not Tradify's, and
+      are not endorsed or documented by Tradify.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: none-published
+      documented: false
+      note: >-
+        No public REST API is documented by Tradify. api.tradifyhq.com serves
+        Tradify's own clients over HTTPS but is undocumented and session-based.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: >-
+        No WebSocket endpoint is documented anywhere in Tradify's product,
+        help centre, or any developer material as of the review date. No public
+        API exists to carry one.
+    - protocol: Webhook
+      scheme: https
+      documented: false
+      note: >-
+        Tradify does not document outbound webhooks. Partner sync is handled
+        inside the pre-built accounting/payment integrations.
+  endpointsConfirmedPublic: []
+  endpointsConfirmedNote: >-
+    Zero endpoints are confirmed as documented public REST endpoints. The
+    modeled paths in openapi/tradify-openapi.yml (jobs, customers, quotes,
+    invoices, timesheets) are inferred from product capabilities and from
+    descriptions of unofficial third-party proxies; they are NOT confirmed
+    against official Tradify documentation and are marked x-status: modeled.
+  confirmedLiveHosts:
+    - host: www.tradifyhq.com
+      https: true
+      note: Marketing site (HubSpot CMS). HSTS max-age 31536000, includeSubDomains, preload.
+    - host: tradifyhq.com
+      https: true
+      note: Redirects (301) to www; Microsoft-IIS/10.0 / ASP.NET front.
+    - host: api.tradifyhq.com
+      https: true
+      note: >-
+        Live app backend. HTTP 200, HSTS max-age 31536000, strict CSP
+        default-src 'none'. Undocumented, session-authenticated, not a public
+        API. GoDaddy-issued TLS cert (distinct from the marketing site).
+    - host: help.tradifyhq.com
+      https: true
+      note: Zendesk-hosted help centre. HSTS max-age 259200.
+sources:
+  - url: https://www.tradifyhq.com/how-it-works
+    type: Documentation
+    note: Product capabilities (jobs, scheduling, quoting, invoicing, timesheets, customers). No API mentioned.
+  - url: https://help.tradifyhq.com/hc/en-us
+    type: Documentation
+    note: Help centre. Integrations limited to accounting/payment partners; no developer API docs.
+  - url: https://www.tradifyhq.com/xero-and-tradify-addon
+    type: Documentation
+    note: Xero two-way sync add-on; a pre-built partner integration, not a general API.
+  - url: https://github.com/Tradify-App
+    type: SourceCode
+    note: Tradify GitHub org has only a .github profile repo; no SDKs, OpenAPI, or public API code.
+  - url: https://supergood.ai/docs/tradify-api
+    type: APIReference
+    note: >-
+      Third-party proxy. States explicitly that Tradify publishes no open
+      public API; the proxy authenticates a managed session (username/password +
+      MFA) and exposes /authenticate, /jobs, /create_job, /quotes, /invoices,
+      /create_invoice. These are the proxy's endpoints, not Tradify's, and imply
+      the resource shape used to model this record.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket surface exists, and no public API of any kind is documented, so
+    answer is false and no AsyncAPI document was created. The catalog record is
+    an honest gated stub: no public base URL is asserted, the OpenAPI is
+    server-less with every operation marked x-status: modeled, and the README,
+    apis.yml description, and this review all flag the access model plainly.

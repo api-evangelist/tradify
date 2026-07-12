@@ -1,0 +1,133 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Tradify
+providerId: tradify
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- Job Management
+- Trades
+- Field Service
+- SaaS
+- Plans
+description: >-
+  Tradify is priced per user, per month as a SaaS subscription for the job
+  management product - there is no separately priced API product because Tradify
+  does not sell a public developer API. Publicly reported tiers (subject to
+  change and regional variation) are Lite, Pro, and Plus, plus a Custom plan for
+  larger teams, with a 14-day free trial and no free tier. Pricing scales with
+  the number of users. Accounting/payment partner integrations (Xero, MYOB,
+  QuickBooks Online, Sage, Stripe) are included with the subscription; the
+  partner platforms carry their own pricing. Exact per-user rates are not
+  reconciled here - verify on Tradify's pricing page.
+notes: >-
+  Amounts below are indicative USD figures gathered from third-party pricing
+  trackers in 2026 and are NOT reconciled against Tradify's own pricing page.
+  Tradify prices by region and currency; confirm current tiers and rates before
+  relying on them. No API metering exists because there is no public API.
+sources:
+- https://www.tradifyhq.com/
+- https://www.capterra.com/p/152413/Tradify/pricing/
+- https://www.g2.com/products/tradify/pricing
+plans:
+- id: tradify-trial
+  name: Free Trial
+  type: free
+  description: 14-day free trial of the full product. No public/free API is included.
+  entries:
+  - label: Trial Period
+    name: trial_period
+    type: flat
+    metric: days
+    limit: 14
+    timeFrame: day
+    geo: global
+    unit: 1
+    price: free for 14 days
+    userMultiplied: false
+  elements:
+  - name: Full Product Access (Trial)
+- id: tradify-lite
+  name: Lite
+  type: paid
+  description: >-
+    Entry per-user subscription tier for smaller trade businesses. Indicative
+    rate ~USD 47 per user / month (unreconciled).
+  entries:
+  - label: Per User Subscription
+    name: lite_per_user
+    type: flat
+    metric: seats
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: ~$47 per user/month (indicative, unreconciled)
+    userMultiplied: true
+  elements:
+  - name: Jobs and Scheduling
+  - name: Quotes and Invoices
+  - name: Accounting Integrations
+- id: tradify-pro
+  name: Pro
+  type: paid
+  description: >-
+    Mid per-user subscription tier. Indicative rate ~USD 51 per user / month
+    (unreconciled).
+  entries:
+  - label: Per User Subscription
+    name: pro_per_user
+    type: flat
+    metric: seats
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: ~$51 per user/month (indicative, unreconciled)
+    userMultiplied: true
+  elements:
+  - name: Everything in Lite
+  - name: Additional Workflow Features
+- id: tradify-plus
+  name: Plus
+  type: paid
+  description: >-
+    Top published per-user subscription tier. Indicative rate ~USD 61 per user /
+    month (unreconciled).
+  entries:
+  - label: Per User Subscription
+    name: plus_per_user
+    type: flat
+    metric: seats
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: ~$61 per user/month (indicative, unreconciled)
+    userMultiplied: true
+  elements:
+  - name: Everything in Pro
+  - name: Advanced Features
+- id: tradify-custom
+  name: Custom
+  type: enterprise
+  description: Custom pricing for larger teams. Contact Tradify.
+  entries:
+  - label: Custom Agreement
+    name: custom
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Volume Pricing
+  - name: Onboarding and Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

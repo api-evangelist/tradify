@@ -1,0 +1,46 @@
+generated: '2026-07-12'
+method: modeled
+source: >-
+  Product/help-centre review plus unofficial third-party proxy descriptions. No
+  official Tradify public API authentication documentation exists.
+summary:
+  types:
+  - session
+  publicApiKeys: false
+  developerPortal: false
+notes: >-
+  Tradify does NOT publish a public developer API, so there is no documented,
+  self-serve API authentication (no API keys, no OAuth client registration, no
+  personal access tokens). End users sign in to the Tradify web and mobile apps
+  with a username/password and MFA; the app backend (api.tradifyhq.com) then
+  uses a session token that is not documented for third-party use. Unofficial
+  proxies (e.g. Supergood) obtain access by automating that username/password +
+  MFA sign-in and replaying the resulting session. Supported third-party data
+  exchange is instead handled by Tradify's pre-built accounting/payment
+  integrations, where authentication happens on the partner side - for example,
+  the Xero integration is authorized with Xero's own OAuth 2.0 flow, not a
+  Tradify credential.
+schemes:
+- name: sessionAuth
+  type: session
+  in: header
+  scheme: bearer
+  modeled: true
+  description: >-
+    MODELED. Session token issued after username/password + MFA sign-in to the
+    Tradify apps. Undocumented and not offered as a public API credential.
+  sources:
+  - https://supergood.ai/docs/tradify-api
+- name: partnerOAuth
+  type: oauth2
+  modeled: false
+  description: >-
+    Authentication for Tradify's supported integrations happens on the partner
+    platform. For example, connecting Xero uses Xero's OAuth 2.0 authorization,
+    not a Tradify-issued API credential.
+  sources:
+  - https://www.tradifyhq.com/xero-and-tradify-addon
+  - https://help.tradifyhq.com/hc/en-us/articles/360019239014-Understanding-Xero-and-Tradify-s-Integration
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
