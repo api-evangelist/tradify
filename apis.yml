@@ -124,6 +124,8 @@ apis:
     and retrieve time entries. No public base URL or reference documentation is
     published by Tradify for this surface.
 common:
+- type: AgenticAccess
+  url: agentic-access/tradify-agentic-access.yml
 - type: DomainSecurity
   url: security/tradify-domain-security.yml
 - type: Authentication
