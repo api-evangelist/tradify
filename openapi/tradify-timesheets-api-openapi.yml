@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: Tradify API (Modeled - Not an Official Public API) Customers Timesheets API
+  version: 0.0-modeled
+  description: 'IMPORTANT: This is a MODELED OpenAPI description. As of 2026-07-12, Tradify does NOT publish an open, self-serve, documented public developer API, developer portal, API keys, or webhooks. There is no public base URL to document, so this specification is intentionally SERVER-LESS and every operation is marked `x-status: modeled`. The resource surface below (jobs, customers, quotes, invoices, timesheets) is inferred from Tradify''s product capabilities and from public descriptions of unofficial third-party proxies that automate the authenticated Tradify session. None of these paths, schemas, or parameters are confirmed against official Tradify documentation and MUST NOT be treated as a supported contract. Tradify''s only supported programmatic surface is its pre-built accounting/payment partner integrations (Xero, MYOB Business, QuickBooks Online, Sage, Stripe). A live backend host, api.tradifyhq.com, exists but is undocumented, session-authenticated, and reserved for Tradify''s own web and mobile clients.'
+  contact:
+    name: Tradify (Access)
+    url: https://www.tradifyhq.com
+  x-access-model:
+    publicApi: false
+    publicApiDocumented: false
+    developerPortal: false
+    selfServiceApiKeys: false
+    documentedWebhooks: false
+    supportedProgrammaticSurface: Accounting/payment partner integrations only (Xero, MYOB Business, QuickBooks Online, Sage, Stripe).
+    liveButUndocumentedHost: https://api.tradifyhq.com
+    modeledFrom:
+    - https://www.tradifyhq.com/how-it-works
+    - https://help.tradifyhq.com/hc/en-us
+    - https://supergood.ai/docs/tradify-api
+    disclaimer: Paths and schemas are inferred, not verified. No supported public base URL exists; do not build integrations against this document.
+tags:
+- name: Timesheets
+  description: (Modeled) Time entries captured against jobs.
+paths:
+  /timesheets:
+    get:
+      operationId: listTimesheets
+      tags:
+      - Timesheets
+      summary: List timesheet entries (modeled)
+      description: MODELED - not a confirmed public endpoint.
+      x-status: modeled
+      responses:
+        '200':
+          description: A list of timesheet entries (modeled).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimeEntry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid session credential (modeled).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    TimeEntry:
+      type: object
+      description: Modeled timesheet entry.
+      properties:
+        id:
+          type: string
+        jobId:
+          type: string
+        userId:
+          type: string
+        minutes:
+          type: integer
+        date:
+          type: string
+          format: date
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: MODELED. Tradify has no public API key scheme. Its app backend uses a session token obtained after username/password + MFA sign-in; unofficial proxies replay that session. There is no documented, self-serve public credential.
