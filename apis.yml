@@ -17,7 +17,20 @@ description: >-
   through unofficial proxies that automate the authenticated session. The API
   entries below are MODELED from Tradify's product capabilities and are not
   confirmed against official public API documentation.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tradify.png
 tags:
 - Job Management
 - Trades
@@ -32,97 +45,86 @@ created: '2026-07-12'
 modified: '2026-07-12'
 specificationVersion: '0.19'
 apis:
-- aid: tradify:tradify-jobs-api
-  name: Tradify Jobs API (Modeled)
-  tags:
-  - Jobs
-  - Job Management
-  - Field Service
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.tradifyhq.com/how-it-works
-  properties:
-  - url: https://www.tradifyhq.com/how-it-works
-    type: Documentation
-  - url: openapi/tradify-openapi.yml
-    type: OpenAPI
-  description: >-
-    MODELED (not an officially documented public API). Represents the job
-    resource Tradify manages - create, list, retrieve, update, and status jobs
-    with linked customers, sites, notes, and attachments. No public base URL or
-    reference documentation is published by Tradify for this surface.
 - aid: tradify:tradify-customers-api
-  name: Tradify Customers API (Modeled)
+  name: Tradify Customers API
+  description: (Modeled) Customers / contacts and their job sites.
+  humanURL: https://www.tradifyhq.com/how-it-works
   tags:
   - Customers
-  - Contacts
-  - CRM
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://help.tradifyhq.com/hc/en-us
   properties:
-  - url: https://help.tradifyhq.com/hc/en-us
-    type: Documentation
-  - url: openapi/tradify-openapi.yml
-    type: OpenAPI
-  description: >-
-    MODELED (not an officially documented public API). Represents the customer /
-    contact resource - create, list, retrieve, and update customers and their
-    job sites. No public base URL or reference documentation is published by
-    Tradify for this surface.
-- aid: tradify:tradify-quotes-api
-  name: Tradify Quotes API (Modeled)
-  tags:
-  - Quotes
-  - Quoting
-  - Estimates
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.tradifyhq.com/how-it-works
-  properties:
-  - url: https://www.tradifyhq.com/how-it-works
-    type: Documentation
-  - url: openapi/tradify-openapi.yml
-    type: OpenAPI
-  description: >-
-    MODELED (not an officially documented public API). Represents quotes /
-    estimates built from templates, pricelists, and material kits - create,
-    list, retrieve, and update quotes. No public base URL or reference
-    documentation is published by Tradify for this surface.
+  - type: OpenAPI
+    url: openapi/tradify-customers-api-openapi.yml
+  - type: Documentation
+    url: https://www.tradifyhq.com/how-it-works
+  - type: Documentation
+    url: https://help.tradifyhq.com/hc/en-us
+  - type: Documentation
+    url: >-
+      https://help.tradifyhq.com/hc/en-us/articles/21124135640473-Create-an-Invoice-from-a-Job-Quote-or-Template
 - aid: tradify:tradify-invoices-api
-  name: Tradify Invoices API (Modeled)
+  name: Tradify Invoices API
+  description: (Modeled) Invoices generated from jobs, quotes, or templates.
+  humanURL: https://www.tradifyhq.com/how-it-works
   tags:
   - Invoices
-  - Invoicing
-  - Payments
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://help.tradifyhq.com/hc/en-us/articles/21124135640473-Create-an-Invoice-from-a-Job-Quote-or-Template
   properties:
-  - url: https://help.tradifyhq.com/hc/en-us/articles/21124135640473-Create-an-Invoice-from-a-Job-Quote-or-Template
-    type: Documentation
-  - url: openapi/tradify-openapi.yml
-    type: OpenAPI
-  description: >-
-    MODELED (not an officially documented public API). Represents invoices
-    generated from jobs, quotes, or templates - create, list, retrieve, and
-    update invoices. In practice invoice sync to accounting systems is delivered
-    through Tradify's Xero / MYOB / QuickBooks / Sage partner integrations, not a
-    public invoices API.
+  - type: OpenAPI
+    url: openapi/tradify-invoices-api-openapi.yml
+  - type: Documentation
+    url: https://www.tradifyhq.com/how-it-works
+  - type: Documentation
+    url: https://help.tradifyhq.com/hc/en-us
+  - type: Documentation
+    url: >-
+      https://help.tradifyhq.com/hc/en-us/articles/21124135640473-Create-an-Invoice-from-a-Job-Quote-or-Template
+- aid: tradify:tradify-jobs-api
+  name: Tradify Jobs API
+  description: (Modeled) Job records with linked customers, sites, and notes.
+  humanURL: https://www.tradifyhq.com/how-it-works
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/tradify-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://www.tradifyhq.com/how-it-works
+  - type: Documentation
+    url: https://help.tradifyhq.com/hc/en-us
+  - type: Documentation
+    url: >-
+      https://help.tradifyhq.com/hc/en-us/articles/21124135640473-Create-an-Invoice-from-a-Job-Quote-or-Template
+- aid: tradify:tradify-quotes-api
+  name: Tradify Quotes API
+  description: (Modeled) Quotes / estimates built from templates and pricelists.
+  humanURL: https://www.tradifyhq.com/how-it-works
+  tags:
+  - Quotes
+  properties:
+  - type: OpenAPI
+    url: openapi/tradify-quotes-api-openapi.yml
+  - type: Documentation
+    url: https://www.tradifyhq.com/how-it-works
+  - type: Documentation
+    url: https://help.tradifyhq.com/hc/en-us
+  - type: Documentation
+    url: >-
+      https://help.tradifyhq.com/hc/en-us/articles/21124135640473-Create-an-Invoice-from-a-Job-Quote-or-Template
 - aid: tradify:tradify-timesheets-api
-  name: Tradify Timesheets API (Modeled)
+  name: Tradify Timesheets API
+  description: (Modeled) Time entries captured against jobs.
+  humanURL: https://www.tradifyhq.com/how-it-works
   tags:
   - Timesheets
-  - Time Tracking
-  - Labour
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.tradifyhq.com/how-it-works
   properties:
-  - url: https://www.tradifyhq.com/how-it-works
-    type: Documentation
-  - url: openapi/tradify-openapi.yml
-    type: OpenAPI
-  description: >-
-    MODELED (not an officially documented public API). Represents timesheet /
-    time-entry records captured against jobs from the mobile app - create, list,
-    and retrieve time entries. No public base URL or reference documentation is
-    published by Tradify for this surface.
+  - type: OpenAPI
+    url: openapi/tradify-timesheets-api-openapi.yml
+  - type: Documentation
+    url: https://www.tradifyhq.com/how-it-works
+  - type: Documentation
+    url: https://help.tradifyhq.com/hc/en-us
+  - type: Documentation
+    url: >-
+      https://help.tradifyhq.com/hc/en-us/articles/21124135640473-Create-an-Invoice-from-a-Job-Quote-or-Template
 common:
 - type: AgenticAccess
   url: agentic-access/tradify-agentic-access.yml
