@@ -1,0 +1,22 @@
+{
+  "provider": "tradify",
+  "sources": [
+    "tradify-customers-api-openapi.yml",
+    "tradify-invoices-api-openapi.yml",
+    "tradify-jobs-api-openapi.yml",
+    "tradify-quotes-api-openapi.yml",
+    "tradify-timesheets-api-openapi.yml"
+  ],
+  "outputs": [
+    "tradify-customers-api-openapi.yml",
+    "tradify-invoices-api-openapi.yml",
+    "tradify-jobs-api-openapi.yml",
+    "tradify-quotes-api-openapi.yml",
+    "tradify-timesheets-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

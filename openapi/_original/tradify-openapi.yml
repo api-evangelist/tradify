@@ -1,0 +1,386 @@
+openapi: 3.0.3
+info:
+  title: Tradify API (Modeled - Not an Official Public API)
+  version: '0.0-modeled'
+  description: >-
+    IMPORTANT: This is a MODELED OpenAPI description. As of 2026-07-12, Tradify
+    does NOT publish an open, self-serve, documented public developer API,
+    developer portal, API keys, or webhooks. There is no public base URL to
+    document, so this specification is intentionally SERVER-LESS and every
+    operation is marked `x-status: modeled`. The resource surface below (jobs,
+    customers, quotes, invoices, timesheets) is inferred from Tradify's product
+    capabilities and from public descriptions of unofficial third-party proxies
+    that automate the authenticated Tradify session. None of these paths, schemas,
+    or parameters are confirmed against official Tradify documentation and MUST
+    NOT be treated as a supported contract. Tradify's only supported programmatic
+    surface is its pre-built accounting/payment partner integrations (Xero, MYOB
+    Business, QuickBooks Online, Sage, Stripe). A live backend host,
+    api.tradifyhq.com, exists but is undocumented, session-authenticated, and
+    reserved for Tradify's own web and mobile clients.
+  contact:
+    name: Tradify (Access)
+    url: https://www.tradifyhq.com
+  x-access-model:
+    publicApi: false
+    publicApiDocumented: false
+    developerPortal: false
+    selfServiceApiKeys: false
+    documentedWebhooks: false
+    supportedProgrammaticSurface: >-
+      Accounting/payment partner integrations only (Xero, MYOB Business,
+      QuickBooks Online, Sage, Stripe).
+    liveButUndocumentedHost: https://api.tradifyhq.com
+    modeledFrom:
+      - https://www.tradifyhq.com/how-it-works
+      - https://help.tradifyhq.com/hc/en-us
+      - https://supergood.ai/docs/tradify-api
+    disclaimer: >-
+      Paths and schemas are inferred, not verified. No supported public base URL
+      exists; do not build integrations against this document.
+tags:
+  - name: Jobs
+    description: (Modeled) Job records with linked customers, sites, and notes.
+  - name: Customers
+    description: (Modeled) Customers / contacts and their job sites.
+  - name: Quotes
+    description: (Modeled) Quotes / estimates built from templates and pricelists.
+  - name: Invoices
+    description: (Modeled) Invoices generated from jobs, quotes, or templates.
+  - name: Timesheets
+    description: (Modeled) Time entries captured against jobs.
+paths:
+  /jobs:
+    get:
+      operationId: listJobs
+      tags: [Jobs]
+      summary: List jobs (modeled)
+      description: MODELED - not a confirmed public endpoint. Lists jobs in the account.
+      x-status: modeled
+      responses:
+        '200':
+          description: A list of jobs (modeled response shape).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createJob
+      tags: [Jobs]
+      summary: Create a job (modeled)
+      description: MODELED - not a confirmed public endpoint. Creates a job.
+      x-status: modeled
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobInput'
+      responses:
+        '201':
+          description: The created job (modeled).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /jobs/{id}:
+    get:
+      operationId: getJob
+      tags: [Jobs]
+      summary: Retrieve a job (modeled)
+      description: MODELED - not a confirmed public endpoint.
+      x-status: modeled
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: A job (modeled).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /customers:
+    get:
+      operationId: listCustomers
+      tags: [Customers]
+      summary: List customers (modeled)
+      description: MODELED - not a confirmed public endpoint.
+      x-status: modeled
+      responses:
+        '200':
+          description: A list of customers (modeled).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createCustomer
+      tags: [Customers]
+      summary: Create a customer (modeled)
+      description: MODELED - not a confirmed public endpoint.
+      x-status: modeled
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerInput'
+      responses:
+        '201':
+          description: The created customer (modeled).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /quotes:
+    get:
+      operationId: listQuotes
+      tags: [Quotes]
+      summary: List quotes (modeled)
+      description: MODELED - not a confirmed public endpoint.
+      x-status: modeled
+      responses:
+        '200':
+          description: A list of quotes (modeled).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Quote'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /invoices:
+    get:
+      operationId: listInvoices
+      tags: [Invoices]
+      summary: List invoices (modeled)
+      description: >-
+        MODELED - not a confirmed public endpoint. In practice, invoice data
+        flows to accounting systems through Tradify's Xero / MYOB / QuickBooks /
+        Sage partner integrations rather than a public invoices API.
+      x-status: modeled
+      responses:
+        '200':
+          description: A list of invoices (modeled).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Invoice'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createInvoice
+      tags: [Invoices]
+      summary: Create an invoice (modeled)
+      description: MODELED - not a confirmed public endpoint.
+      x-status: modeled
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceInput'
+      responses:
+        '201':
+          description: The created invoice (modeled).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /timesheets:
+    get:
+      operationId: listTimesheets
+      tags: [Timesheets]
+      summary: List timesheet entries (modeled)
+      description: MODELED - not a confirmed public endpoint.
+      x-status: modeled
+      responses:
+        '200':
+          description: A list of timesheet entries (modeled).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimeEntry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        MODELED. Tradify has no public API key scheme. Its app backend uses a
+        session token obtained after username/password + MFA sign-in; unofficial
+        proxies replay that session. There is no documented, self-serve public
+        credential.
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier (modeled).
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid session credential (modeled).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found (modeled).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    Job:
+      type: object
+      description: Modeled job record.
+      properties:
+        id:
+          type: string
+        number:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+        customerId:
+          type: string
+        siteAddress:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    JobInput:
+      type: object
+      properties:
+        description:
+          type: string
+        customerId:
+          type: string
+        siteAddress:
+          type: string
+    Customer:
+      type: object
+      description: Modeled customer / contact record.
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+    CustomerInput:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+    Quote:
+      type: object
+      description: Modeled quote / estimate record.
+      properties:
+        id:
+          type: string
+        number:
+          type: string
+        customerId:
+          type: string
+        total:
+          type: number
+        status:
+          type: string
+    Invoice:
+      type: object
+      description: Modeled invoice record.
+      properties:
+        id:
+          type: string
+        number:
+          type: string
+        jobId:
+          type: string
+        total:
+          type: number
+        status:
+          type: string
+    InvoiceInput:
+      type: object
+      properties:
+        jobId:
+          type: string
+        quoteId:
+          type: string
+    TimeEntry:
+      type: object
+      description: Modeled timesheet entry.
+      properties:
+        id:
+          type: string
+        jobId:
+          type: string
+        userId:
+          type: string
+        minutes:
+          type: integer
+        date:
+          type: string
+          format: date
