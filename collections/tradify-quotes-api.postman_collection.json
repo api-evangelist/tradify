@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "b9d00069-6355-4cfb-8f4a-74c13790c481",
+      "name": "Quotes",
+      "description": {
+        "content": "(Modeled) Quotes / estimates built from templates and pricelists.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bef3fc8b-77b8-481f-8620-ebcf01bc3aad",
+          "name": "List quotes (modeled)",
+          "request": {
+            "name": "List quotes (modeled)",
+            "description": {
+              "content": "MODELED - not a confirmed public endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f43c765-5192-4ec6-b4a7-739ce2f94544",
+              "name": "A list of quotes (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"number\": \"string\",\n      \"customerId\": \"string\",\n      \"total\": 3295.433042255763,\n      \"status\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"number\": \"string\",\n      \"customerId\": \"string\",\n      \"total\": 317.2197428591483,\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a061663-7173-40c2-b0c7-dee2c47cd566",
+              "name": "Missing or invalid session credential (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "96cf3d78-3b60-4c40-b1bb-6a03b6294b00",
+    "name": "Tradify API (Modeled - Not an Official Public API) Customers Quotes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IMPORTANT: This is a MODELED OpenAPI description. As of 2026-07-12, Tradify does NOT publish an open, self-serve, documented public developer API, developer portal, API keys, or webhooks. There is no public base URL to document, so this specification is intentionally SERVER-LESS and every operation is marked `x-status: modeled`. The resource surface below (jobs, customers, quotes, invoices, timesheets) is inferred from Tradify's product capabilities and from public descriptions of unofficial third-party proxies that automate the authenticated Tradify session. None of these paths, schemas, or parameters are confirmed against official Tradify documentation and MUST NOT be treated as a supported contract. Tradify's only supported programmatic surface is its pre-built accounting/payment partner integrations (Xero, MYOB Business, QuickBooks Online, Sage, Stripe). A live backend host, api.tradifyhq.com, exists but is undocumented, session-authenticated, and reserved for Tradify's own web and mobile clients.\n\nContact Support:\n Name: Tradify (Access)",
+      "type": "text/plain"
+    }
+  }
+}

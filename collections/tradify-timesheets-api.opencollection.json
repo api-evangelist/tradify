@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradify API (Modeled - Not an Official Public API) Customers Timesheets API",
+    "version": "0.0-modeled"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Timesheets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List timesheet entries (modeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/timesheets"
+          },
+          "docs": "MODELED - not a confirmed public endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

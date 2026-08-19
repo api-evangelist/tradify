@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradify API (Modeled - Not an Official Public API) Customers Jobs API",
+    "version": "0.0-modeled"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List jobs (modeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/jobs"
+          },
+          "docs": "MODELED - not a confirmed public endpoint. Lists jobs in the account."
+        },
+        {
+          "info": {
+            "name": "Create a job (modeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "MODELED - not a confirmed public endpoint. Creates a job."
+        },
+        {
+          "info": {
+            "name": "Retrieve a job (modeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/jobs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier (modeled)."
+              }
+            ]
+          },
+          "docs": "MODELED - not a confirmed public endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

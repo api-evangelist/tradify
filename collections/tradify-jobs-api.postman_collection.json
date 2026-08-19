@@ -1,0 +1,447 @@
+{
+  "item": [
+    {
+      "id": "d7019c46-86d1-4806-ab8d-4f30a7a375a1",
+      "name": "Jobs",
+      "description": {
+        "content": "(Modeled) Job records with linked customers, sites, and notes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27192731-4793-41ac-bda5-d2bab88d6b9d",
+          "name": "List jobs (modeled)",
+          "request": {
+            "name": "List jobs (modeled)",
+            "description": {
+              "content": "MODELED - not a confirmed public endpoint. Lists jobs in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df80d54a-235c-4a40-949d-280decb1ad25",
+              "name": "A list of jobs (modeled response shape).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"number\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"string\",\n      \"customerId\": \"string\",\n      \"siteAddress\": \"string\",\n      \"createdAt\": \"1949-05-11T21:59:29.668Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"number\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"string\",\n      \"customerId\": \"string\",\n      \"siteAddress\": \"string\",\n      \"createdAt\": \"1983-12-06T15:47:28.942Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f127916f-2858-4fcc-a287-4d58780737d9",
+              "name": "Missing or invalid session credential (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "393d59e1-b670-4156-9288-5ea31c9f2061",
+          "name": "Create a job (modeled)",
+          "request": {
+            "name": "Create a job (modeled)",
+            "description": {
+              "content": "MODELED - not a confirmed public endpoint. Creates a job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"siteAddress\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d9478a17-b514-4257-84a6-b3398fc1c7af",
+              "name": "The created job (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"siteAddress\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"number\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"string\",\n  \"customerId\": \"string\",\n  \"siteAddress\": \"string\",\n  \"createdAt\": \"1968-09-12T03:56:20.025Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e754bee-03cc-4e89-b089-7e1004d82357",
+              "name": "Missing or invalid session credential (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"siteAddress\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "729e3256-4e9c-4b1f-b220-696c93552984",
+          "name": "Retrieve a job (modeled)",
+          "request": {
+            "name": "Retrieve a job (modeled)",
+            "description": {
+              "content": "MODELED - not a confirmed public endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier (modeled)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b777f171-9188-4973-81cb-163ef5824418",
+              "name": "A job (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier (modeled)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"number\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"string\",\n  \"customerId\": \"string\",\n  \"siteAddress\": \"string\",\n  \"createdAt\": \"1968-09-12T03:56:20.025Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bcec377-350c-4547-9bd5-020bdfed8f3c",
+              "name": "Missing or invalid session credential (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier (modeled)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23daa319-30be-4c55-bf9a-1e094fe606e9",
+              "name": "Resource not found (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier (modeled)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "45450a20-c3bd-45d6-bd6f-4a593110e11d",
+    "name": "Tradify API (Modeled - Not an Official Public API) Customers Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IMPORTANT: This is a MODELED OpenAPI description. As of 2026-07-12, Tradify does NOT publish an open, self-serve, documented public developer API, developer portal, API keys, or webhooks. There is no public base URL to document, so this specification is intentionally SERVER-LESS and every operation is marked `x-status: modeled`. The resource surface below (jobs, customers, quotes, invoices, timesheets) is inferred from Tradify's product capabilities and from public descriptions of unofficial third-party proxies that automate the authenticated Tradify session. None of these paths, schemas, or parameters are confirmed against official Tradify documentation and MUST NOT be treated as a supported contract. Tradify's only supported programmatic surface is its pre-built accounting/payment partner integrations (Xero, MYOB Business, QuickBooks Online, Sage, Stripe). A live backend host, api.tradifyhq.com, exists but is undocumented, session-authenticated, and reserved for Tradify's own web and mobile clients.\n\nContact Support:\n Name: Tradify (Access)",
+      "type": "text/plain"
+    }
+  }
+}

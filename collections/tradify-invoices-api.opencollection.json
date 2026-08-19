@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradify API (Modeled - Not an Official Public API) Customers Invoices API",
+    "version": "0.0-modeled"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List invoices (modeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/invoices"
+          },
+          "docs": "MODELED - not a confirmed public endpoint. In practice, invoice data flows to accounting systems through Tradify's Xero / MYOB / QuickBooks / Sage partner integrations rather than a public invoices API."
+        },
+        {
+          "info": {
+            "name": "Create an invoice (modeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "MODELED - not a confirmed public endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

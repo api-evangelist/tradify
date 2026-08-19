@@ -1,0 +1,271 @@
+{
+  "item": [
+    {
+      "id": "8b3bd352-dd84-4b53-816f-349a8eda1bc2",
+      "name": "Invoices",
+      "description": {
+        "content": "(Modeled) Invoices generated from jobs, quotes, or templates.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "26678fa6-f2dc-4eda-9beb-30b9863bf0e7",
+          "name": "List invoices (modeled)",
+          "request": {
+            "name": "List invoices (modeled)",
+            "description": {
+              "content": "MODELED - not a confirmed public endpoint. In practice, invoice data flows to accounting systems through Tradify's Xero / MYOB / QuickBooks / Sage partner integrations rather than a public invoices API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d760e31-b550-4105-b609-4026958332ba",
+              "name": "A list of invoices (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"number\": \"string\",\n      \"jobId\": \"string\",\n      \"total\": 5146.448890090483,\n      \"status\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"number\": \"string\",\n      \"jobId\": \"string\",\n      \"total\": 445.55798877621845,\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe069c8a-3063-4108-b21f-18f7093ed244",
+              "name": "Missing or invalid session credential (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57d72d4d-2f20-42ea-ae98-a4e0f38dd984",
+          "name": "Create an invoice (modeled)",
+          "request": {
+            "name": "Create an invoice (modeled)",
+            "description": {
+              "content": "MODELED - not a confirmed public endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jobId\": \"<string>\",\n  \"quoteId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e6bccb83-470f-46ee-a8fe-fc50ff97def9",
+              "name": "The created invoice (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jobId\": \"<string>\",\n  \"quoteId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"number\": \"string\",\n  \"jobId\": \"string\",\n  \"total\": 1687.9249136032936,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85392b2c-c83a-4840-a0c0-4075f69ee0b1",
+              "name": "Missing or invalid session credential (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jobId\": \"<string>\",\n  \"quoteId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ac34dbb1-18cc-471e-99be-a788cf106f7a",
+    "name": "Tradify API (Modeled - Not an Official Public API) Customers Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IMPORTANT: This is a MODELED OpenAPI description. As of 2026-07-12, Tradify does NOT publish an open, self-serve, documented public developer API, developer portal, API keys, or webhooks. There is no public base URL to document, so this specification is intentionally SERVER-LESS and every operation is marked `x-status: modeled`. The resource surface below (jobs, customers, quotes, invoices, timesheets) is inferred from Tradify's product capabilities and from public descriptions of unofficial third-party proxies that automate the authenticated Tradify session. None of these paths, schemas, or parameters are confirmed against official Tradify documentation and MUST NOT be treated as a supported contract. Tradify's only supported programmatic surface is its pre-built accounting/payment partner integrations (Xero, MYOB Business, QuickBooks Online, Sage, Stripe). A live backend host, api.tradifyhq.com, exists but is undocumented, session-authenticated, and reserved for Tradify's own web and mobile clients.\n\nContact Support:\n Name: Tradify (Access)",
+      "type": "text/plain"
+    }
+  }
+}
