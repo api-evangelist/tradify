@@ -17,6 +17,18 @@ description: >-
   through unofficial proxies that automate the authenticated session. The API
   entries below are MODELED from Tradify's product capabilities and are not
   confirmed against official public API documentation.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
