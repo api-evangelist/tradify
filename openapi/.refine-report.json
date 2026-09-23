@@ -1,11 +1,7 @@
 {
   "provider": "tradify",
   "sources": [
-    "tradify-customers-api-openapi.yml",
-    "tradify-invoices-api-openapi.yml",
-    "tradify-jobs-api-openapi.yml",
-    "tradify-quotes-api-openapi.yml",
-    "tradify-timesheets-api-openapi.yml"
+    "_original/tradify-openapi.yml"
   ],
   "outputs": [
     "tradify-customers-api-openapi.yml",
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "tradify-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "tradify-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradify-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradify-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradify-quotes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradify-timesheets-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

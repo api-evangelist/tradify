@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tradify API (Modeled - Not an Official Public API) Customers Jobs API
+  title: Tradify API (Modeled - Not an Official Public API) Jobs API
   version: 0.0-modeled
-  description: 'IMPORTANT: This is a MODELED OpenAPI description. As of 2026-07-12, Tradify does NOT publish an open, self-serve, documented public developer API, developer portal, API keys, or webhooks. There is no public base URL to document, so this specification is intentionally SERVER-LESS and every operation is marked `x-status: modeled`. The resource surface below (jobs, customers, quotes, invoices, timesheets) is inferred from Tradify''s product capabilities and from public descriptions of unofficial third-party proxies that automate the authenticated Tradify session. None of these paths, schemas, or parameters are confirmed against official Tradify documentation and MUST NOT be treated as a supported contract. Tradify''s only supported programmatic surface is its pre-built accounting/payment partner integrations (Xero, MYOB Business, QuickBooks Online, Sage, Stripe). A live backend host, api.tradifyhq.com, exists but is undocumented, session-authenticated, and reserved for Tradify''s own web and mobile clients.'
+  description: 'IMPORTANT: This is a MODELED OpenAPI description.'
   contact:
     name: Tradify (Access)
     url: https://www.tradifyhq.com
@@ -89,6 +89,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier (modeled).
+      schema:
+        type: string
   schemas:
     Job:
       type: object
@@ -141,14 +149,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier (modeled).
-      schema:
-        type: string
   securitySchemes:
     sessionAuth:
       type: apiKey
