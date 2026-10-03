@@ -69,6 +69,27 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    CustomerInput:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
     Customer:
       type: object
       description: Modeled customer / contact record.
@@ -81,27 +102,6 @@ components:
           type: string
         phone:
           type: string
-    CustomerInput:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-        phone:
-          type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
   responses:
     Unauthorized:
       description: Missing or invalid session credential (modeled).

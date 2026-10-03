@@ -69,13 +69,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    InvoiceInput:
-      type: object
-      properties:
-        jobId:
-          type: string
-        quoteId:
-          type: string
     Error:
       type: object
       properties:
@@ -86,6 +79,13 @@ components:
               type: string
             message:
               type: string
+    InvoiceInput:
+      type: object
+      properties:
+        jobId:
+          type: string
+        quoteId:
+          type: string
     Invoice:
       type: object
       description: Modeled invoice record.
