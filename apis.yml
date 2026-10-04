@@ -150,6 +150,9 @@ apis:
     url: >-
       https://help.tradifyhq.com/hc/en-us/articles/21124135640473-Create-an-Invoice-from-a-Job-Quote-or-Template
 common:
+- type: CapabilityMap
+  url: capabilities/tradify-capability-edges.yml
+  name: Tradify Business Capability Map
 - type: AgenticAccess
   url: agentic-access/tradify-agentic-access.yml
 - type: DomainSecurity

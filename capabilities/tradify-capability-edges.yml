@@ -1,0 +1,33 @@
+slug: tradify
+provider: Tradify
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Invoices
+  spec_file: tradify-invoices-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.76
+  evidence: POST /invoices  createInvoice  Create an invoice (modeled)
+  reason: Creating and listing customer invoices for completed jobs is customer invoicing, i.e. Accounts
+    Receivable Management.
+- tag: Customers
+  spec_file: tradify-customers-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.75
+  evidence: 'GET /customers  listCustomers  List customers (modeled); schemas: CustomerInput, Customer'
+  reason: CRUD over customer records in a job-management product maintains the customer master; maps to
+    Customer Data Management, though the modeled spec is thin.
