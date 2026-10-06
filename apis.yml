@@ -64,7 +64,7 @@ tags_raw:
 - Contractors
 - SaaS
 created: '2026-07-12'
-modified: '2026-07-12'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: tradify:tradify-customers-api
@@ -150,6 +150,10 @@ apis:
     url: >-
       https://help.tradifyhq.com/hc/en-us/articles/21124135640473-Create-an-Invoice-from-a-Job-Quote-or-Template
 common:
+- url: https://www.tradifyhq.com/blog
+  type: Blog
+- url: https://www.tradifyhq.com/blog/rss.xml
+  type: BlogRSS
 - type: CapabilityMap
   url: capabilities/tradify-capability-edges.yml
   name: Tradify Business Capability Map
